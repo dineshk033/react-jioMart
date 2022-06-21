@@ -1,16 +1,16 @@
-import { GroceriesMockData } from "../../MockData";
+// import { GroceriesMockData } from "../../MockData";
 import ProductCard from "./productItem";
 
-const ProductList = ({ sort }) => {
+const ProductList = ({ sort, DATA }) => {
   const sortByMock = (arg) => {
     switch (arg) {
       case "HighToLow":
-        return GroceriesMockData.sort((a, b) => b.avg_mrp - a.avg_mrp);
+        return DATA.sort((a, b) => b.avg_mrp - a.avg_mrp);
       case "LowToHigh":
-        return GroceriesMockData.sort((a, b) => a.avg_mrp - b.avg_mrp);
+        return DATA.sort((a, b) => a.avg_mrp - b.avg_mrp);
 
       default:
-        return GroceriesMockData.sort((a, b) => b.popularity - a.popularity);
+        return DATA.sort((a, b) => b.popularity - a.popularity);
     }
   };
 
