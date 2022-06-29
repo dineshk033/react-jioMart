@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "api":"json-server --watch --port 4000 RestAPI/data.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
