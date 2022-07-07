@@ -1,7 +1,8 @@
-const CustomButton = () => {
+const CustomButton = ({ handleClick }) => {
   return (
     <button
       type="button"
+      onClick={handleClick}
       style={{ fontSize: "0.9rem" }}
       className="btn btn-primary btn-lg btn-block "
     >

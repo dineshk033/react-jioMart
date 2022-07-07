@@ -3,12 +3,12 @@ import ProductList from "./productList";
 
 const URL =
   "https://www.jiomart.com/images/category/219/fruits-vegetables-20220519.jpeg";
-const ProductContainer = ({ DATA }) => {
+const ProductContainer = () => {
   const [sort, setSort] = useState("Popularity");
   const handleSorting = (arg) => {
     setSort(arg);
   };
-  console.log(DATA);
+
   return (
     <div className="p-3">
       <img src={URL} alt="banner" />
@@ -33,7 +33,7 @@ const ProductContainer = ({ DATA }) => {
           Low to High
         </button>
       </div>
-      <ProductList sort={sort} DATA={DATA} />
+      <ProductList sort={sort} />
     </div>
   );
 };

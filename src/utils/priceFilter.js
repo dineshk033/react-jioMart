@@ -1,9 +1,9 @@
 import { GroceriesMockData } from "../MockData";
 
 /* filtering Mock data based on Price values*/
-export const PriceFilter = (price) => {
+export const PriceFilter = (data, price) => {
   /*returns collections of object whichever satisfies our condition*/
-  return GroceriesMockData.filter((item) => item.avg_mrp < price);
+  return data.filter((item) => item.avg_mrp < price);
 };
 
 /* filtering Mock data based on Discount values*/

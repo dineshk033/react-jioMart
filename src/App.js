@@ -1,28 +1,55 @@
-import { useState } from "react";
 import "./App.css";
-import FetchDataConsume from "./component/example/fetchDataConsume";
-
-import FilterComponent from "./component/filters";
-import ProductContainer from "./component/productList";
-import { PriceFilter } from "./utils/priceFilter";
+import Cart from "./component/cart";
+import { HashRouter as Router, NavLink, Route, Routes } from "react-router-dom";
+import Homepage from "./pages/homepage";
+import PageNotFound from "./pages/404";
+import ProductDetail from "./pages/productDetailPage";
+import React from "react";
+export const ThemeContext = React.createContext({ theme: "dark" });
 function App() {
-  const [price, setPrice] = useState(10000);
-  const handlePrice = (arg) => {
-    setPrice(arg);
-  };
   return (
-    <div className="container-fluid ">
-      <div className="row">
-        <div className="col-3 bg-light">
-          <FilterComponent handlePrice={handlePrice} />
+    <Router>
+      <ThemeContext.Provider value={{ theme: "dark" }}>
+        <div className="container-fluid ">
+          <nav className="navbar navbar-dark bg-primary">
+            <div className="container-fluid">
+              <span className="navbar-brand mb-0 h1">Groceries Jio Mart</span>
+              <div className="d-flex " id="navbarNavAltMarkup">
+                <div className="d-flex navbar-nav flex-row">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link mr-3 active" : "nav-link mr-3"
+                    }
+                    to="/"
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link mr-3 active" : "nav-link mr-3"
+                    }
+                    to="/cart"
+                  >
+                    Cart
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          </nav>
+          {
+            //Selecting page based on path
+          }
+          <Routes>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="groceries">
+              <Route path=":id" element={<ProductDetail />} />
+            </Route>
+            <Route path="/" element={<Homepage />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         </div>
-        <div className="col-9 bg-light">
-          <FetchDataConsume />
-          <ProductContainer DATA={PriceFilter(price)} />
-          {/* <ToggleButton /> */}
-        </div>
-      </div>
-    </div>
+      </ThemeContext.Provider>
+    </Router>
   );
 }
 
